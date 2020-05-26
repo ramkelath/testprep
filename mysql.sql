@@ -1,4 +1,4 @@
-# Dump of table sessions
+# DDL for table sessions
 # ------------------------------------------------------------
 
 CREATE TABLE `sessions` (
@@ -10,7 +10,7 @@ CREATE TABLE `sessions` (
 
 
 
-# Dump of table users
+# DDL for table users
 # ------------------------------------------------------------
 
 CREATE TABLE `users` (
@@ -22,4 +22,24 @@ CREATE TABLE `users` (
   `twostep` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+# DDL for table question
+# ------------------------------------------------------------
+
+CREATE TABLE `Question` (
+ `question_id` int(11) NOT NULL,
+ `intro_text` text NOT NULL,
+ `question_text` text NOT NULL,
+ `parent_question_id` int(11) NOT NULL,
+ `area` text NOT NULL,
+ `correct_answer` text NOT NULL,
+ `wrong_answer_1` text NOT NULL,
+ `wrong_answer_2` text NOT NULL,
+ `wrong_answer_3` text NOT NULL,
+ `wrong_answer_4` text NOT NULL,
+ `wrong_answer_5` text NOT NULL,
+ `notes` int(11) NOT NULL,
+  PRIMARY KEY (`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
