@@ -1,7 +1,0 @@
-RewriteEngine On
-RewriteBase /
-Redirect 404 / http://www.google.com
-ErrorDocument 404 /index.php
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^testprep/(.+)$ /index.php [QSA,L]

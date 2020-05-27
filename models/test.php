@@ -18,7 +18,7 @@ else {
 printf("Starting<br>");
 //$conn->select_db("sakila");
 
-$result = mysqli_query($conn , "SELECT first_name, last_name FROM actor LIMIT 10");
+$result = mysqli_query($conn , "SELECT question_text, correct_answer FROM question  LIMIT 10");
 
 while ($row = $result->fetch_row())
  {

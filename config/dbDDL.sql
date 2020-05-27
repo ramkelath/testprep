@@ -28,7 +28,7 @@ CREATE TABLE `users` (
 # DDL for table question
 # ------------------------------------------------------------
 
-CREATE TABLE `Question` (
+CREATE TABLE `question` (
  `question_id` int(11) NOT NULL,
  `intro_text` text NOT NULL,
  `question_text` text NOT NULL,

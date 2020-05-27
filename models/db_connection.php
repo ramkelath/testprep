@@ -5,7 +5,7 @@ function OpenDBConnection()
    $dbhost = "127.0.0.1";
    $dbuser = "root";
    $dbpass = "linering";
-   $db = "sakila";
+   $db = "testprep";
 
    $conn = new mysqli ($dbhost, $dbuser, $dbpass, $db );
    return $conn;

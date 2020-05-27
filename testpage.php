@@ -4,6 +4,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <?php
-include(dirname(__DIR__)."/testprep/views/homepage.php");
+#include(dirname(__DIR__)."/testprep/models/questions.php");
+include(dirname(__DIR__)."/testprep/views/question.php");
 ?>
 <br>
