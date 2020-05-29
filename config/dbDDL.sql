@@ -43,3 +43,15 @@ CREATE TABLE `question` (
  `notes` int(11) NOT NULL,
   PRIMARY KEY (`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+# DDL for table correct_answer
+# -------------------------------------------------------------
+CREATE TABLE `testprep`.`answer` (
+  `answer_id` INT NOT NULL,
+  `user_id` INT NULL,
+  `test_id` INT NULL,
+  `question_id` INT NULL,
+  `response` VARCHAR(450) NULL,
+  `correct` TINYINT NULL,
+  PRIMARY KEY (`answer_id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
