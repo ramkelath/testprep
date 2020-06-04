@@ -14,11 +14,25 @@ function CloseDBConnection($conn) {
   $conn -> close();
   }
 
+function DBSelect($query) {
+   
+   $conn = OpenDBConnection();
+
+   if ($conn->connect_error) {
+      die("Connection error in DBSelect : " . $conn->connect_error);
+   }
+
+   #$result = mysqli_query($conn ,$query);
+   $result = $conn->query($query);
+
+   return $result;
+}
+
 function DBInsert($query, $params) {
    $conn = OpenDBConnection();
 
    if ($conn->connect_error) {
-    die("Connection error : " . $conn->connect_error);
+    die("Connection error in DBInsert: " . $conn->connect_error);
    }
    $stmt = $conn->prepare($query);
    /* bind parameters for markers */

@@ -4,7 +4,10 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <?php
-include(dirname(__DIR__)."/testprep/models/questions.php");
-include(dirname(__DIR__)."/testprep/views/question.php");
+require_once(dirname(__DIR__)."/testprep/models/question.php");
+include(dirname(__DIR__)."/testprep/models/question_gateway.php");
+#die(var_dump($result));
+$Question = new Question($row);
+include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
 <br>

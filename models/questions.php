@@ -1,19 +1,7 @@
 <?php
-
-include 'db_connection.php';
-
-$conn = OpenDBConnection();
-
-if ($conn->connect_error) {
- die("Connection error : " . $conn->connect_error);
-}
-
-$result = mysqli_query($conn , "SELECT question_text, correct_answer, wrong_answer_1, wrong_answer_2, wrong_answer_2, wrong_answer_3 FROM  question  LIMIT 10");
-
-$row = $result->fetch_row();
-
-$result->close();
-
-CloseDBConnection($conn);
-
+include 'db_operations.php';
+$insert_query =  "SELECT question_text, correct_answer, wrong_answer_1, wrong_answer_2, wrong_answer_2, wrong_answer_3 FROM  question";
+$result = DBSelect($insert_query);
+#die(print_r($result));
+$row = $result->fetch_array(MYSQLI_NUM);
 ?>
