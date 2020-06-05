@@ -35,12 +35,16 @@ function DBInsert($query, $params) {
     die("Connection error in DBInsert: " . $conn->connect_error);
    }
    $stmt = $conn->prepare($query);
+   #die(var_dump($params));
    /* bind parameters for markers */
    if ($stmt) {
       $types = str_repeat("s", count($params)); 
       $stmt->bind_param($types, ...$params);
       /* execute query */
       $stmt->execute();
+      if ($stmt->error) {
+         die($stmt->error);
+      }
    }
    CloseDBConnection($conn);
 }

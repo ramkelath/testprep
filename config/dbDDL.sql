@@ -53,5 +53,6 @@ CREATE TABLE `testprep`.`answer` (
   `question_id` INT NULL,
   `response` VARCHAR(450) NULL,
   `correct` TINYINT NULL,
-  PRIMARY KEY (`answer_id`)
+  PRIMARY KEY (`answer_id`),
+  UNIQUE KEY `test_question_id` (`test_id`,'question_id')
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
