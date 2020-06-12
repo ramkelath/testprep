@@ -8,6 +8,7 @@ require_once(dirname(__DIR__)."/testprep/models/question.php");
 include(dirname(__DIR__)."/testprep/models/question_gateway.php");
 #die(var_dump($result));
 $Question = new Question($row);
+$Question->randomize_wrong_answers();
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
 <br>
