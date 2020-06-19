@@ -19,7 +19,7 @@ class Question {
       // Functions go here
 
       public function __construct($data) {
-            $this->question_id = 1;
+            $this->question_id = $data['question_id'];
             $this->question_text = $data['question_text'];
             $this->correct_answer = $data['correct_answer'];
             $this->answer[0]= $data['correct_answer'];

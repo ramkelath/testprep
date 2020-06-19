@@ -1,36 +1,29 @@
 <?php
-class Question {
+class Answer {
 
       // Properties go here 
 
-     // Persisted properties from DB
-
+     // Public properties
+     public $answer_id;
+     public $user_id;
+     public $test_id;
      public $question_id;
-     public $intro_text;
-     public $question_text;
-     public $parent_question_id;
-     public $area;
-     public $correct_answer;
-     public $wrong_answer_1;
-     public $wrong_answer_2;
-     public $wrong_answer_3;
-     public $wrong_answer_4;
-     public $wrong_answer_5;
+     public $response;
+     public $correct;
+
 
       
-      // Non-persisted question properties
-      public $current_question;
-
+      // Non-persisted  properties
+ 
       // Functions go here
 
       public function __construct($data) {
-            $this->question_id = 1;
-            $this->question_text = $data['question_text'];
-            $this->correct_answer = $data['correct_answer'];
-            $this->wrong_answer_1 = $data['wrong_answer_1'];
-            $this->wrong_answer_2 = $data['wrong_answer_2'];
-            $this->wrong_answer_2 = $data['wrong_answer_3'];
-            $this->wrong_answer_4 = $data['wrong_answer_4'];
+            $this->answer_id = $data[0];
+            $this->user_id = $data[1];
+            $this->test_id = $data[2];
+            $this->question_id = $data[3];
+            $this->response= $data[4];
+            $this->correct = $data[5];
       }
 
 }

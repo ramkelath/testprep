@@ -4,6 +4,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <?php
+session_start();
+$_SESSION["user_id"] = "1";
 include(dirname(__DIR__)."/testprep/views/homepage.php");
 ?>
 <br>

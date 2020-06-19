@@ -4,11 +4,22 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <?php
+session_start();
 require_once(dirname(__DIR__)."/testprep/models/question.php");
-include(dirname(__DIR__)."/testprep/models/question_gateway.php");
-#die(var_dump($result));
-$Question = new Question($row);
-$Question->randomize_wrong_answers();
+require_once(dirname(__DIR__)."/testprep/models/question_gateway.php");
+
+if ($_GET && $_GET["NextQuestion"]) {
+    $Question = next($_SESSION["QuestionList"]);
+    if ($Question == false) {
+        echo "Thank you for completing the test!";
+    }
+} else  {
+    require_once(dirname(__DIR__)."/testprep/models/question.php");
+    require_once(dirname(__DIR__)."/testprep/models/question_gateway.php");
+    $_SESSION["test_id"] = "1";
+    $Question = current($_SESSION["QuestionList"]);
+}
+
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
 <br>
