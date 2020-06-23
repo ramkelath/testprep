@@ -16,15 +16,23 @@
       <input type = "hidden" name ="question_id" value=<?php echo $Question->question_id;?>>
       <input type = "hidden" name ="correct" value=<?php echo $Question->correct_answer ?>>
       <div style="width: 100%;margin-left: 10%;">
-      <div style="font-weight:bold" ><?php echo $Question->question_text ?>?</div><br>
       <?php
-      for ($i= 0; $i < 3; $i++) {
-      ?>  
-        <input type = "radio" name="questionx"  value=<?php echo $Question->answer[$i]; ?>> 
-        <label for = "this" ><?php echo $Question->answer[$i]; ?></label><br>
+      foreach ($QuestionPage as $Question) {
+        if ($Question->intro_text) { echo '<div>'.$Question->intro_text . '</div><br><br>';}
+      ?>
+        <div style="font-weight:bold" ><?php echo $Question->question_text ?>?</div><br>
+        <?php
+        for ($i= 0; $i < 3; $i++) {
+        ?>  
+          <input type = "radio" name="questionx"  value=<?php echo $Question->answer[$i]; ?>> 
+          <label for = "this" ><?php echo $Question->answer[$i]; ?></label><br>
+        <?php
+        }
+        ?>  
+        <br>
       <?php
       }
-      ?>  
+     ?>  
       <br><br>
       <input type = "submit" value="Answer"><br>
        </div>

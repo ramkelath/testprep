@@ -9,15 +9,16 @@ require_once(dirname(__DIR__)."/testprep/models/question.php");
 require_once(dirname(__DIR__)."/testprep/models/question_gateway.php");
 
 if ($_GET && $_GET["NextQuestion"]) {
-    $Question = next($_SESSION["QuestionList"]);
-    if ($Question == false) {
-        echo "Thank you for completing the test!";
+    $QuestionPage = next($_SESSION["QuestionList"]);
+    if ($QuestionPage == false) {
+        die( "Thank you for completing the test!");
     }
 } else  {
     require_once(dirname(__DIR__)."/testprep/models/question.php");
     require_once(dirname(__DIR__)."/testprep/models/question_gateway.php");
     $_SESSION["test_id"] = "1";
-    $Question = current($_SESSION["QuestionList"]);
+    $current = 0;
+    $QuestionPage =  current($_SESSION["QuestionList"]);
 }
 
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
