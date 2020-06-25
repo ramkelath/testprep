@@ -1,6 +1,6 @@
 <?php
 
-include 'db_operations.php';
+include_once 'db_operations.php';
 $select_query =  "SELECT parent_question_id, intro_text,  question_id, question_text, correct_answer, wrong_answer_1, wrong_answer_2, wrong_answer_3, wrong_answer_4, wrong_answer_5 FROM  question";
 $result = DBSelect($select_query);
 
@@ -16,4 +16,5 @@ while ($row = $result->fetch_assoc()) {
     }
     $_SESSION["QuestionList"][$index][] = $Question;
 }
+#die(var_dump($_SESSION["QuestionList"]));
 ?>
