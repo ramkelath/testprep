@@ -22,7 +22,6 @@ function DBSelect($query) {
       die("Connection error in DBSelect : " . $conn->connect_error);
    }
 
-   #$result = mysqli_query($conn ,$query);
    $result = $conn->query($query);
 
    return $result;
@@ -35,12 +34,29 @@ function DBInsert($query, $params) {
     die("Connection error in DBInsert: " . $conn->connect_error);
    }
    $stmt = $conn->prepare($query);
-   #die(var_dump($params));
-   /* bind parameters for markers */
+   /* bind parameters */
    if ($stmt) {
       $types = str_repeat("s", count($params)); 
       $stmt->bind_param($types, ...$params);
-      /* execute query */
+      $stmt->execute();
+      if ($stmt->error) {
+         die($stmt->error);
+      }
+   }
+   CloseDBConnection($conn);
+}
+
+function DBQuery($query, $params) {
+   $conn = OpenDBConnection();
+   if ($conn->connect_error) {
+    die("Connection error in DBQuery " . $conn->connect_error);
+   }
+   $stmt = $conn->prepare($query);
+   die(var_dump($stmt->eroor));
+   /* bind parameters */
+   if ($stmt) {
+      $types = str_repeat("s", count($params)); 
+      $stmt->bind_param($types, ...$params);
       $stmt->execute();
       if ($stmt->error) {
          die($stmt->error);
