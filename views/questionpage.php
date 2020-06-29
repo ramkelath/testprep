@@ -28,7 +28,7 @@
         <?php
         for ($i= 0; $i < 3; $i++) {
         ?>  
-          <input type = "radio" name="question<?php echo $Question->question_id;?>" value="<?php echo $Question->answer[$i];?>"> 
+          <input type = "radio" name="question<?php echo $j;?>" value="<?php echo $Question->answer[$i];?>"> 
           <label for = "this" ><?php echo $Question->answer[$i]; ?></label><br>
         <?php
         }

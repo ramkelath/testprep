@@ -52,7 +52,9 @@ function DBQuery($query, $params) {
     die("Connection error in DBQuery " . $conn->connect_error);
    }
    $stmt = $conn->prepare($query);
-   die(var_dump($stmt->eroor));
+   if ( false===$stmt ) {
+      printf('prepare failed: %s', htmlspecialchars($conn->error));
+  }
    /* bind parameters */
    if ($stmt) {
       $types = str_repeat("s", count($params)); 
@@ -60,6 +62,8 @@ function DBQuery($query, $params) {
       $stmt->execute();
       if ($stmt->error) {
          die($stmt->error);
+      } else {
+         return $stmt->get_result();
       }
    }
    CloseDBConnection($conn);

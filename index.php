@@ -12,9 +12,7 @@ if (isset($_GET["reset"])) {
 if (isset($_POST["login"])) {
     $login = $_POST["login"];
     $password = $_POST["password"];
-    #include_once(dirname(__DIR__)."/testprep/models/login_gateway.php");
-    #die(var_dump($_SESSION["user_id"]));
-    $_SESSION["user_id"] = 1;
+    include_once(dirname(__DIR__)."/testprep/models/login_gateway.php");
 }
 
 if (isset($_SESSION["user_id"])) {
