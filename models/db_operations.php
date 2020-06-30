@@ -38,9 +38,11 @@ function DBInsert($query, $params) {
    if ($stmt) {
       $types = str_repeat("s", count($params)); 
       $stmt->bind_param($types, ...$params);
-      $stmt->execute();
+
       if ($stmt->error) {
          die($stmt->error);
+      } else {
+         $stmt->execute();
       }
    }
    CloseDBConnection($conn);

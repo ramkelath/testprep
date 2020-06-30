@@ -20,11 +20,11 @@
       <?php
       $j = 1;
       foreach ($QuestionGroup as $Question) {
-        if ($Question->intro_text) { echo '<div>'.$Question->intro_text . '</div><br><br>';}
+        if ($Question->intro_text) { echo '<div style="width:80%">'.$Question->intro_text . '</div><br><br>';}
       ?>
         <div style="font-weight:bold" ><?php echo $Question->question_text ?>?</div><br>
         <input type = "hidden" name = <?php echo "question_id" . $j?> value=<?php echo $Question->question_id;?>>
-        <input type = "hidden" name ="correct" value=<?php echo $Question->correct_answer?>>
+        <input type = "hidden" name = <?php echo "correct". $j?> value="<?php echo $Question->correct_answer?>">
         <?php
         for ($i= 0; $i < 3; $i++) {
         ?>  

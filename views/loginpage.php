@@ -16,6 +16,10 @@
 		<span class="login-form-title"  style="font-size: large; font-style:bold;">
 			Member Login
 		</span>
+		<br>
+		<?php echo $error_message ?>
+		<br>
+			
 
 		<div class="wrap-input validate-input" style="margin-top:20px; margin-bottom: 20px" data-validate = "Valid login is required.">
 			<input class="input" type="text" name="login" placeholder="Login">
@@ -25,6 +29,7 @@
 		<div class="wrap-input validate-input"  style="margin-top:20px; margin-bottom: 20px" data-validate = "Password is required">
 			<input class="input" type="password" name="password" placeholder="Password">
 			<span class="focus-input"></span>
+
 			<span class="symbol-input">
 		</div>
 		

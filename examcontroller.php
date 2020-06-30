@@ -25,7 +25,6 @@ if ($_GET && $_GET["NextQuestion"]) {
     $_SESSION["CurrentQuestion"] = $current + 1;
     $_SESSION["TotalQuestions"] = sizeof($_SESSION["QuestionList"]);
 }
-
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
 <br>

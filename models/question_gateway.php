@@ -5,7 +5,6 @@ $select_query =  "SELECT parent_question_id, intro_text,  question_id, question_
 $result = DBSelect($select_query);
 
 $_SESSION["test_id"] = "1";
-$_SESSION["user_id"] = "1";
 $_SESSION["QuestionList"] = array();
 $index = -1;
 while ($row = $result->fetch_assoc()) {
@@ -16,5 +15,4 @@ while ($row = $result->fetch_assoc()) {
     }
     $_SESSION["QuestionList"][$index][] = $Question;
 }
-#die(var_dump($_SESSION["QuestionList"]));
 ?>
