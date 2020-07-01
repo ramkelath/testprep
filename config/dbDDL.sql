@@ -10,10 +10,10 @@ CREATE TABLE `sessions` (
 
 
 
-# DDL for table users
+# DDL for table user
 # ------------------------------------------------------------
 
-CREATE TABLE `users` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nid` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `username` varchar(65) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -44,7 +44,7 @@ CREATE TABLE `question` (
   PRIMARY KEY (`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-# DDL for table correct_answer
+# DDL for table answer
 # -------------------------------------------------------------
 CREATE TABLE `answer` (
   `user_id` int DEFAULT NULL,
