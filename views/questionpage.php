@@ -26,7 +26,7 @@
       foreach ($QuestionGroup as $Question) {
         if ($Question->intro_text) { echo '<div style="width:80%">'.$Question->intro_text . '</div><br><br>';}
       ?>
-        <div style = "font-weight: bold"><?php echo "Question: " . $Question->question_id  . "<br>" . $Question->question_text ?>?</div><br>
+        <div style = "font-weight: bold"><?php echo "Question " . $Question->question_id  . ".<br>" . $Question->question_text ?>?</div><br>
         <input type = "hidden" name = <?php echo "question_id" . $j?> value=<?php echo $Question->question_id;?>>
         <input type = "hidden" name = <?php echo "correct". $j?> value="<?php echo $Question->correct_answer?>">
         <?php
@@ -44,10 +44,10 @@
      ?>  
       <br><br>
       <div>
-      <span><input type = checkbox name="review" id = "review"> Mark for Review?</span>
-      <span  style="padding:2%"><input style = "border-style: outset;" type = submit value = "Back"></span>
-      <span  style="padding:1%"><input style = "border-style: outset;" type = submit value = "Next"></span>
-      <span  style="padding:5%"><input style = "border-style: outset;" type = button value = "End Exam"></span>
+      <span  style="width:8%;padding-right:4%"><input type = checkbox name="review" id = "review"> Mark for Review?</span>
+      <span  style="padding:2%"><input style = "border-style: outset; width:15%" type = submit value = "Back" name = "Back"></span>
+      <span  style="padding:1%"><input style = "border-style: outset; width:15%" type = submit value = "Next" name = "Next"></span>
+      <span  style="padding:5%"><input style = "border-style: outset; width:15%" type = button value = "End Exam"  onclick="window.open('', '_self', ''); window.close();"></span>
        </div>
       </form>
 </body>

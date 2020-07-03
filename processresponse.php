@@ -14,8 +14,12 @@ for ($j=1; $j<= $_POST['length']; $j++) {
     $Answer = new Answer($row);
     include(dirname(__DIR__)."/testprep/models/saveanswer.php");
 }
-
-header('Location: '."/testprep/examcontroller.php?NextQuestion=Y");
+if ($_POST['Next']) {
+    $direction = 'Next';
+} else {
+    $direction = 'Back';
+}
+header('Location: '."/testprep/examcontroller.php?direction=".$direction);
 exit();
 ?>
 <br>
