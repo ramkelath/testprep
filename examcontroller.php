@@ -30,6 +30,10 @@ if ($_GET && $_GET["direction"]) {
     $QuestionGroup =  $_SESSION["QuestionList"][$current];
     $_SESSION["CurrentPage"] = $current;
     $_SESSION["TotalQuestions"] = sizeof($_SESSION["QuestionList"]);
+    if ( ! isset($_SESSION["ExamStarted"] )) {
+        $Date = new DateTime();
+        $_SESSION["ExamStarted"] = $Date->getTimestamp();
+    }
 }
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
