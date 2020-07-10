@@ -46,11 +46,13 @@ CREATE TABLE `question` (
 
 # DDL for table answer
 # -------------------------------------------------------------
+
 CREATE TABLE `answer` (
   `user_id` int DEFAULT NULL,
   `test_id` int DEFAULT NULL,
   `question_id` int DEFAULT NULL,
   `response` varchar(450) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `correct` tinyint DEFAULT NULL,
+  `taken_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY `user_test_question` (`user_id`,`test_id`,`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

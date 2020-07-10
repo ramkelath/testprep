@@ -6,6 +6,7 @@ $result = DBSelect($select_query);
 
 $_SESSION["test_id"] = "1";
 $_SESSION["QuestionList"] = array();
+#$_SESSION["ReviewList"] = array();
 $index = -1;
 while ($row = $result->fetch_assoc()) {
     $Question = new Question($row);

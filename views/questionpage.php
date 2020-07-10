@@ -13,6 +13,11 @@
       <span style= "float: right; margin-right: 10%">Question Timer: <span id ="page_time">00:00:00</span></span> 
       <hr width="100%"></hr></div>
       <br>
+      <?php if (isset($warning))  {?>
+      <div class="alert alert-info" role="alert">
+      <?php echo $warning; ?>
+      </div>
+      <?php } ?>
       <form action="/testprep/processresponse.php" method="post">
       <input type = "hidden" name ="user_id" value =<?php echo $_SESSION["user_id"]?>>
       <input type = "hidden" name ="test_id" value =<?php echo $_SESSION["test_id"]?>>

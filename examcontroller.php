@@ -11,21 +11,28 @@ if ($_GET && $_GET["direction"]) {
     $current = $_SESSION["CurrentPage"];
     $length = $_SESSION["TotalQuestions"];
     $direction = $_GET["direction"];
+    if (isset($_GET["review"])) {
+        $_SESSION["ReviewList"][] = $current;
+    }
+
     if ($direction == 'Next') {
         $current ++;
     } else {
         $current --;
     }
-    if ($current == $length || $current <  0) {
-        die( "Thank you for completing the test!");
-    } else  {
-        $QuestionGroup =  $_SESSION["QuestionList"][$current];
-        $_SESSION["CurrentPage"] = $current;
-    }
+
+    if ($current == $length){
+        $warning = "You are at the last question!";
+        $current = $length - 1;
+        die(var_dump($_SESSION["ReviewList"]));
+    } elseif ($current <  0) {
+        $warning = "You are at the first question!";
+        $current = 0;
+    } 
+    $QuestionGroup =  $_SESSION["QuestionList"][$current];
+    $_SESSION["CurrentPage"] = $current;
+
 } else  {
-    require_once(dirname(__DIR__)."/testprep/models/question.php");
-    require_once(dirname(__DIR__)."/testprep/models/question_gateway.php");
-    $_SESSION["test_id"] = "1";
     $current = 0;
     $QuestionGroup =  $_SESSION["QuestionList"][$current];
     $_SESSION["CurrentPage"] = $current;
