@@ -4,9 +4,20 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <?php
+include(dirname(__DIR__)."/testprep/models/question.php");
 session_start();
-require_once(dirname(__DIR__)."/testprep/models/question.php");
-require_once(dirname(__DIR__)."/testprep/models/question_gateway.php");
+// Create a new exam if we don't have one yet 
+if ( !isset($_SESSION["ExamStarted"] )) {
+    require_once(dirname(__DIR__)."/testprep/models/exam.php");
+    $current = 0;
+    $QuestionGroup =  $_SESSION["QuestionList"][$current];
+    $_SESSION["CurrentPage"] = $current;
+    $_SESSION["TotalQuestions"] = sizeof($_SESSION["QuestionList"]);
+    $Date = new DateTime();
+    $_SESSION["ExamStarted"] = $Date->getTimestamp();
+}
+
+// Process previous question and move to next requested question
 if ($_GET && $_GET["direction"]) {
     $current = $_SESSION["CurrentPage"];
     $length = $_SESSION["TotalQuestions"];
@@ -21,10 +32,11 @@ if ($_GET && $_GET["direction"]) {
         $current --;
     }
 
+    // Checm for the end of the exam or at the beginning
     if ($current == $length){
         $warning = "You are at the last question!";
         $current = $length - 1;
-        die(var_dump($_SESSION["ReviewList"]));
+        //die(var_dump($_SESSION["ReviewList"]));
     } elseif ($current <  0) {
         $warning = "You are at the first question!";
         $current = 0;
@@ -32,16 +44,8 @@ if ($_GET && $_GET["direction"]) {
     $QuestionGroup =  $_SESSION["QuestionList"][$current];
     $_SESSION["CurrentPage"] = $current;
 
-} else  {
-    $current = 0;
-    $QuestionGroup =  $_SESSION["QuestionList"][$current];
-    $_SESSION["CurrentPage"] = $current;
-    $_SESSION["TotalQuestions"] = sizeof($_SESSION["QuestionList"]);
-    if ( ! isset($_SESSION["ExamStarted"] )) {
-        $Date = new DateTime();
-        $_SESSION["ExamStarted"] = $Date->getTimestamp();
-    }
 }
+
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
 <br>

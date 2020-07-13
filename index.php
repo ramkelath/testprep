@@ -4,6 +4,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <?php
+include_once(dirname(__DIR__)."/testprep/models/db_gateway.php");
 session_start();
 $error_message = '';
 if (isset($_GET["reset"])) {
@@ -13,7 +14,14 @@ if (isset($_GET["reset"])) {
 if (isset($_POST["login"])) {
     $login = $_POST["login"];
     $password = $_POST["password"];
-    include_once(dirname(__DIR__)."/testprep/models/login_gateway.php");
+    $gateway = new Gateway;
+    $result = $gateway->login($login, $password);         
+    if ($result && $row = $result->fetch_assoc()) {
+        $_SESSION["user_id"] = $row["id"];
+    } else {
+        $error_message = 'Login unsuccessful, please try again';
+    }
+    
 }
 
 if (isset($_SESSION["user_id"])) {
