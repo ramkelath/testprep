@@ -12,7 +12,6 @@
       <br>
       <span style= "float: right; margin-right: 10%">Question Timer: <span id ="page_time">00:00:00</span></span> 
       <hr width="100%"></hr></div>
-      <br>
       <?php if (isset($warning))  {?>
       <div class="alert alert-info" role="alert">
       <?php echo $warning; ?>
@@ -51,9 +50,13 @@
      ?>  
       <br><br>
       <div>
+      <?php if ( $_SESSION["FirstPass"] ){?>
       <span  style="width:8%;padding-right:4%"><input type = checkbox name="review" id = "review"> Mark for Review?</span>
       <span  style="padding:2%"><input style = "border-style: outset; width:15%" type = submit value = "Back" name = "Back"></span>
+      <?php }?>
+      <?php if ($more_questions) {?>
       <span  style="padding:1%"><input style = "border-style: outset; width:15%" type = submit value = "Next" name = "Next"></span>
+      <?php }?>
       <span  style="padding:5%"><input style = "border-style: outset; width:15%" type = button value = "End Exam"  onclick="window.open('', '_self', ''); window.close();"></span>
        </div>
       </form>
