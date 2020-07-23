@@ -11,7 +11,8 @@
       <span style= "float: right; margin-right: 10%">Overall Timer: <span id ="exam_time">00:00:00</span></span> 
       <br>
       <span style= "float: right; margin-right: 10%">Question Timer: <span id ="page_time">00:00:00</span></span> 
-      <hr width="100%"></hr></div>
+      <hr width="100%"></hr>
+      </div>
       <?php if (isset($warning))  {?>
       <div class="alert alert-info" role="alert">
       <?php echo $warning; ?>

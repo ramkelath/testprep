@@ -19,6 +19,7 @@ class Question {
       // Functions go here
 
       public function __construct($data) {
+            if ($data['area']) {$this->area = $data['area'];}
             $this->intro_text = $data['intro_text'];
             $this->question_id = $data['question_id'];
             $this->question_text = $data['question_text'];
