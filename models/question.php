@@ -22,6 +22,7 @@ class Question {
             if ($data['area']) {$this->area = $data['area'];}
             $this->intro_text = $data['intro_text'];
             $this->question_id = $data['question_id'];
+            $this->parent_question_id = $data['parent_question_id'];
             $this->question_text = $data['question_text'];
             $this->correct_answer = $data['correct_answer'];
             $this->answer[0]= $data['correct_answer'];
