@@ -11,26 +11,37 @@ class Question {
      public $parent_question_id;
      public $area;
      public $correct_answer;
-     public $page_answers = [];
+     public $wrong_answer_1;
+     public $wrong_answer_2;
+     public $wrong_answer_3;
+     public $wrong_answer_4;
+     public $wrong_answer_5;
+     public $answer = [];
 
       // Non-persisted question properties
-      public $current_question;
+      // public $current_question;
 
       // Functions go here
 
-      public function __construct($data) {
-            if ($data['area']) {$this->area = $data['area'];}
-            $this->intro_text = $data['intro_text'];
-            $this->question_id = $data['question_id'];
-            $this->parent_question_id = $data['parent_question_id'];
-            $this->question_text = $data['question_text'];
-            $this->correct_answer = $data['correct_answer'];
-            $this->answer[0]= $data['correct_answer'];
-            $this->answer[1]= $data['wrong_answer_1'];
-            $this->answer[2]= $data['wrong_answer_2'];
-            $this->answer[3] = $data['wrong_answer_3'];
-            if ($data['wrong_answer_4']) {$this->answer[4]= $data['wrong_answer_4'];}
-            if ($data['wrong_answer_5']) {$this->answer[5]= $data['wrong_answer_5'];}
+      public function __construct($data = null) {
+            if ($data) {
+                  if ($data['area']) {$this->area = $data['area'];}
+                  $this->intro_text = $data['intro_text'];
+                  $this->question_id = $data['question_id'];
+                  $this->parent_question_id = $data['parent_question_id'];
+                  $this->question_text = $data['question_text'];
+                  $this->correct_answer = $data['correct_answer'];
+                  $this->answer[0]= $data['correct_answer'];
+                  $this->answer[1]= $data['wrong_answer_1'];
+                  $this->answer[2]= $data['wrong_answer_2'];
+                  $this->answer[3] = $data['wrong_answer_3'];
+                  if ($data['wrong_answer_1']) {$this->answer[4]= $data['wrong_answer_1'];}
+                  if ($data['wrong_answer_2']) {$this->answer[5]= $data['wrong_answer_2'];}
+                  if ($data['wrong_answer_3']) {$this->answer[4]= $data['wrong_answer_3'];}
+                  if ($data['wrong_answer_4']) {$this->answer[4]= $data['wrong_answer_4'];}
+                  if ($data['wrong_answer_5']) {$this->answer[5]= $data['wrong_answer_5'];}
+            }
+
       }
 
       public function randomize_wrong_answers() {
