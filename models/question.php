@@ -35,11 +35,13 @@ class Question {
                   $this->answer[1]= $data['wrong_answer_1'];
                   $this->answer[2]= $data['wrong_answer_2'];
                   $this->answer[3] = $data['wrong_answer_3'];
-                  if ($data['wrong_answer_1']) {$this->answer[4]= $data['wrong_answer_1'];}
-                  if ($data['wrong_answer_2']) {$this->answer[5]= $data['wrong_answer_2'];}
-                  if ($data['wrong_answer_3']) {$this->answer[4]= $data['wrong_answer_3'];}
                   if ($data['wrong_answer_4']) {$this->answer[4]= $data['wrong_answer_4'];}
                   if ($data['wrong_answer_5']) {$this->answer[5]= $data['wrong_answer_5'];}
+                  $this->wrong_answer_1 = $data['wrong_answer_1'];
+                  $this->wrong_answer_2 = $data['wrong_answer_2'];
+                  $this->wrong_answer_3 = $data['wrong_answer_3'];
+                  if ($data['wrong_answer_4']) {$this->wrong_answer_4 = $data['wrong_answer_4'];}
+                  if ($data['wrong_answer_5']) {$this->wrong_answer_5 = $data['wrong_answer_5'];}
             }
 
       }

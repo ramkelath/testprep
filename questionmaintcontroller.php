@@ -6,8 +6,10 @@
 <?php
 include(dirname(__DIR__)."/testprep/models/question.php");
 session_start();
-if ($_POST and $_POST["edit"]) {
+if ($_POST and isset($_POST["edit"])) {
     include(dirname(__DIR__)."/testprep/views/questionform.php");  
+} elseif ($_POST and isset($_POST["update"])) {
+    include(dirname(__DIR__)."/testprep/models/updateanswer.php"); 
 } else {
     require_once(dirname(__DIR__)."/testprep/models/questionlist_gateway.php");
     include(dirname(__DIR__)."/testprep/views/questionlist.php");
