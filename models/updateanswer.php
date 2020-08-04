@@ -1,7 +1,7 @@
 <?php
 include_once 'db_operations.php';
 
-if (isset($_POST['parent_question_id'])) {
+if (isset($_POST['parent_question_id']) and $_POST[parent_question_id] != '') {
     $parent_question_id = $_POST['parent_question_id'];
 } else {
     $parent_question_id = NULL;
