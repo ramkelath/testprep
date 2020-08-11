@@ -28,19 +28,20 @@ CREATE TABLE `user` (
 # DDL for table question
 # ------------------------------------------------------------
 
-CREATE TABLE `question` (
- `question_id` int(11) NOT NULL,
+CREATE TABLE `question` ( 
+ `question_id` int(11) NOT NULL AUTO_INCREMENT,
  `intro_text` text NOT NULL,
  `question_text` text NOT NULL,
  `parent_question_id` int(11) NOT NULL,
  `area` text NOT NULL,
+ `type` text NOT NULL,
  `correct_answer` text NOT NULL,
  `wrong_answer_1` text NOT NULL,
  `wrong_answer_2` text NOT NULL,
  `wrong_answer_3` text NOT NULL,
- `wrong_answer_4` text NOT NULL,
- `wrong_answer_5` text NOT NULL,
- `notes` int(11) NOT NULL,
+ `wrong_answer_4` text,
+ `wrong_answer_5` text,
+ `source` text,
   PRIMARY KEY (`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
