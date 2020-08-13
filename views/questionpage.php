@@ -23,17 +23,19 @@
       <input type = "hidden" name ="test_id" value =<?php echo $_SESSION["test_id"]?>>
       <input type = "hidden" name ="exam_started" id="exam_started" value=<?php echo $_SESSION["ExamStarted"]?>>
       <input type = "hidden" name ="page_started" id="page_started" value=<?php $date = new DateTime(); echo $date->getTimestamp()?>>
-       <div style="width: 100%;margin-left: 10%;">
+       <div style="width: 80%;margin-left: 10%;">
       <?php
-      $k = sizeof($QuestionGroup);
+      //$k = sizeof($QuestionGroup) ? sizeof($QuestionGroup) : 1;
+      $k = 1
       ?>
       <input type = "hidden" name = "length" value=<?php echo $k?>>
       <?php
       $j = 1;
-      foreach ($QuestionGroup as $Question) {
+      //foreach ($QuestionGroup as $Question) {
+        $Question = $QuestionGroup;
         if ($Question->intro_text) { echo '<div style="width:80%">'.$Question->intro_text . '</div><br><br>';}
       ?>
-        <div style = "font-weight: bold"><?php echo "Question " . $Question->question_id  . ".<br>" . $Question->question_text ?>?</div><br>
+        <div style = "font-weight: bold; width=100px"><?php echo "Question " . $Question->question_id  . ".<br>" . $Question->question_text ?>?</div><br>
         <input type = "hidden" name = <?php echo "question_id" . $j?> value=<?php echo $Question->question_id;?>>
         <input type = "hidden" name = <?php echo "correct". $j?> value="<?php echo $Question->correct_answer?>">
         <?php
@@ -47,7 +49,7 @@
         <br>
       <?php
       $j++;
-      }
+      //}
      ?>  
       <br><br>
       <div>

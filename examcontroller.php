@@ -37,7 +37,7 @@ if ($_GET && $_GET["direction"]) {
         } else {
             $current --;
         }  
-        if (($current >= $length)) {
+        if (($current >= 300)) {
             if (isset($_SESSION["ReviewList"]) && sizeof($_SESSION["ReviewList"])){
                 $current = array_shift($_SESSION["ReviewList"]);
                 $more_questions = sizeof($_SESSION["ReviewList"]);
@@ -79,7 +79,8 @@ if ($_GET && $_GET["direction"]) {
     
 
 }
-$QuestionGroup =  $_SESSION["QuestionList"][$current];
+//die(var_dump($_SESSION["QuestionList"]));
+$QuestionGroup =  $_SESSION["QuestionList"][-1][$current];
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
 <br>
