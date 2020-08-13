@@ -29,19 +29,20 @@ CREATE TABLE `user` (
 # ------------------------------------------------------------
 
 CREATE TABLE `question` ( 
- `question_id` int(11) NOT NULL AUTO_INCREMENT,
- `intro_text` text NOT NULL,
- `question_text` text NOT NULL,
- `parent_question_id` int(11) NOT NULL,
- `area` text NOT NULL,
- `type` text NOT NULL,
- `correct_answer` text NOT NULL,
- `wrong_answer_1` text NOT NULL,
- `wrong_answer_2` text NOT NULL,
- `wrong_answer_3` text NOT NULL,
- `wrong_answer_4` text,
- `wrong_answer_5` text,
- `source` text,
+  `question_id` int NOT NULL AUTO_INCREMENT,
+  `intro_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `question_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `parent_question_id` int NOT NULL,
+  `area` text COLLATE utf8_unicode_ci NOT NULL,
+  `type` text COLLATE utf8_unicode_ci NOT NULL,
+  `correct_answer` text COLLATE utf8_unicode_ci NOT NULL,
+  `wrong_answer_1` text COLLATE utf8_unicode_ci NOT NULL,
+  `wrong_answer_2` text COLLATE utf8_unicode_ci NOT NULL,
+  `wrong_answer_3` text COLLATE utf8_unicode_ci NOT NULL,
+  `wrong_answer_4` text COLLATE utf8_unicode_ci,
+  `wrong_answer_5` text COLLATE utf8_unicode_ci,
+  `notes` text COLLATE utf8_unicode_ci,
+  `source` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
