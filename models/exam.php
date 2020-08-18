@@ -6,7 +6,7 @@ $_SESSION["QuestionList"] = array();
 //$_SESSION["ReviewList"] = array();
 $gateway = new Gateway;
 $result = $gateway->exam();
-$index = -1;
+$index = 0;
 
 while ($row = $result->fetch_assoc()) {
     $Question = new Question($row);

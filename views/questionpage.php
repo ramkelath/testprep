@@ -35,14 +35,18 @@
         $Question = $QuestionGroup;
         if ($Question->intro_text) { echo '<div style="width:80%">'.$Question->intro_text . '</div><br><br>';}
       ?>
-        <div style = "font-weight: bold; width=100px"><?php echo "Question " . $Question->question_id  . ".<br>" . $Question->question_text ?>?</div><br>
+        <div style = "width=80%"><b><?php echo "Question " . $Question->question_id  . ".</b><br><br>" . $Question->question_text ?></div><br>
         <input type = "hidden" name = <?php echo "question_id" . $j?> value=<?php echo $Question->question_id;?>>
         <input type = "hidden" name = <?php echo "correct". $j?> value="<?php echo $Question->correct_answer?>">
         <?php
         for ($i= 0; $i < 3; $i++) {
         ?>  
-          <input type = "radio" name="question<?php echo $j;?>" value="<?php echo $Question->answer[$i];?>"> 
-          <label for = "this" ><?php echo $Question->answer[$i]; ?></label><br>
+          <div>
+          <span style="width:100%">
+          <input type = "radio" style="margin-top: 2px; " name="question<?php echo $j;?>" value="<?php echo $Question->answer[$i];?>"> 
+        </span>
+          <label style="width:90%; margin-left:8px;vertical-align: top;"><?php echo $Question->answer[$i]; ?></label><br><br>
+          </div>
         <?php
         }
         ?>  

@@ -15,7 +15,8 @@ if ( !isset($_SESSION["ExamStarted"] )) {
     $Date = new DateTime();
     $QuestionGroup =  $_SESSION["QuestionList"][$current];
     $_SESSION["CurrentPage"] = $current;
-    $_SESSION["TotalQuestions"] = sizeof($_SESSION["QuestionList"]);
+    $_SESSION["TotalQuestions"] = sizeof($_SESSION["QuestionList"][0]);
+    var_dump($_SESSION["TotalQuestions"]);
     $_SESSION["FirstPass"] = true;
     $_SESSION["ExamStarted"] = $Date->getTimestamp();
 } else {
@@ -36,15 +37,15 @@ if ($_GET && $_GET["direction"]) {
             $current ++;
         } else {
             $current --;
-        }  
-        if (($current >= 300)) {
+        }   
+        if (($current == $_SESSION["TotalQuestions"])) {
+            $warning = "You are at the last question!";
+            $current = $_SESSION["CurrentPage"];
+        } elseif ($current > $_SESSION["TotalQuestions"])  {
             if (isset($_SESSION["ReviewList"]) && sizeof($_SESSION["ReviewList"])){
                 $current = array_shift($_SESSION["ReviewList"]);
                 $more_questions = sizeof($_SESSION["ReviewList"]);
                 $_SESSION["FirstPass"] = false;
-            } else {
-                $warning = "You are at the last question!";
-                $current = $_SESSION["CurrentPage"];
             }
         } elseif ($current <  0) {
             $warning = "You are at the first question!";
@@ -80,7 +81,7 @@ if ($_GET && $_GET["direction"]) {
 
 }
 //die(var_dump($_SESSION["QuestionList"]));
-$QuestionGroup =  $_SESSION["QuestionList"][-1][$current];
+$QuestionGroup =  $_SESSION["QuestionList"][0][$current];
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
 <br>
