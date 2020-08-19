@@ -1,18 +1,22 @@
 
 <h1 class="text-center">
-      Home Page
+      PMP Test Preparation Home
 </h1>
 <br>
 <br>
 <br>
 
-<div style="text-align:center">
-<ul class="breadcrumb">
+<div style="width:80%; margin:auto">
+<div class="text-left ml-5">
+<ul class="breadcrumb" style="font-size:large">
   <li><a href="#">Home</a></li>
   <li><a href="#">Maintain Questions</a></li>
   <li><a href="#">Maintain Users</a></li>
 </ul>
-<ul style="cell-padding:10px">
+</div>
+<br/><br/>
+<div class="text-left">
+<ul style="cell-padding:10px; line-height: 300%; font-size:xx-large; list-style-type: none">
 <li>
 <a  onclick="window.open('/testprep/examcontroller.php', 
                          'newwindow', 
@@ -23,5 +27,9 @@
 <li>
 <a href = "/testprep/questionmaintcontroller.php">Maintain Questions</a>
 </li>
-</ul>
+<li>
+<a href="#">Maintain Users</a>
+</li>
+</ul> 
+</div>
 </div>
