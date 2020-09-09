@@ -14,6 +14,6 @@ while ($row = $result->fetch_assoc()) {
     if (is_null($row["parent_question_id"])) { 
         $index++;
     }
-    $_SESSION["QuestionList"][$index][] = $Question;
+    $_SESSION["QuestionList"][][$index]= $Question;
 }
 ?>

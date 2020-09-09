@@ -7,16 +7,15 @@
 include(dirname(__DIR__)."/testprep/models/question.php");
 session_start();
 $more_questions= true;
+$current = 0;
 
 // Create a new exam if we don't have one yet 
 if ( !isset($_SESSION["ExamStarted"] )) {
     require_once(dirname(__DIR__)."/testprep/models/exam.php");
-    $current = 0;
     $Date = new DateTime();
-    $QuestionGroup =  $_SESSION["QuestionList"][$current];
+    $QuestionGroup =  $_SESSION["QuestionList"][$current][0];
     $_SESSION["CurrentPage"] = $current;
-    $_SESSION["TotalQuestions"] = sizeof($_SESSION["QuestionList"][0]);
-    var_dump($_SESSION["TotalQuestions"]);
+    $_SESSION["TotalQuestions"] = sizeof($_SESSION["QuestionList"]);
     $_SESSION["FirstPass"] = true;
     $_SESSION["ExamStarted"] = $Date->getTimestamp();
 } else {
@@ -26,18 +25,20 @@ if ( !isset($_SESSION["ExamStarted"] )) {
 
 // Process previous question and move to next requested question
 if ($_GET && $_GET["direction"]) {
-
+    
     $direction = $_GET["direction"];
     if (isset($_GET["review"])) {
         $_SESSION["ReviewList"][] = $current;
     }
     
+    // Check for the end of the exam or the beginning
+
     if ($_SESSION["FirstPass"]) {
         if ($direction == 'Next') {
             $current ++;
         } else {
             $current --;
-        }   
+        }
         if (($current == $_SESSION["TotalQuestions"])) {
             $warning = "You are at the last question!";
             $current = $_SESSION["CurrentPage"];
@@ -50,6 +51,7 @@ if ($_GET && $_GET["direction"]) {
         } elseif ($current <  0) {
             $warning = "You are at the first question!";
             $current = 0;
+            $_SESSION["CurrentPage"] = $current;
         }   
     } else {
 
@@ -65,9 +67,6 @@ if ($_GET && $_GET["direction"]) {
         }
     }
 
-    // Check for the end of the exam or the beginning
-   
-
     $_SESSION["CurrentPage"] = $current;
     $current = $_SESSION["CurrentPage"];
 } else {
@@ -81,7 +80,7 @@ if ($_GET && $_GET["direction"]) {
 
 }
 //die(var_dump($_SESSION["QuestionList"]));
-$QuestionGroup =  $_SESSION["QuestionList"][0][$current];
+$QuestionGroup =  $_SESSION["QuestionList"][$current][0];
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
 <br>
