@@ -9,6 +9,7 @@ session_start();
 $error_message = '';
 if (isset($_GET["reset"])) {
     session_destroy();
+    header('Location: /testprep/index.php');
 }
 
 if (isset($_POST["login"])) {

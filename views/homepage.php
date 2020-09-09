@@ -30,6 +30,9 @@
 <li>
 <a href="#">Maintain Users</a>
 </li>
+<li>
+<a href="/testprep/index.php?reset=1">Log Out</a>
+</li>
 </ul> 
 </div>
 </div>
