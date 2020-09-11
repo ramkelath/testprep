@@ -33,6 +33,7 @@ CREATE TABLE `question` (
   `intro_text` text COLLATE utf8_unicode_ci NOT NULL,
   `question_text` text COLLATE utf8_unicode_ci NOT NULL,
   `parent_question_id` int NOT NULL,
+  `group_code` text COLLATE utf8_unicode_ci NOT NULL,
   `area` text COLLATE utf8_unicode_ci NOT NULL,
   `type` text COLLATE utf8_unicode_ci NOT NULL,
   `correct_answer` text COLLATE utf8_unicode_ci NOT NULL,

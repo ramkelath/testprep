@@ -3,6 +3,7 @@
   <tr>
   <th scope="col">Question</th>
   <th scope="col">Parent</th>
+  <th scope="col">Group</th>
   <th scope="col">Area</th>
   <th scope="col" width="30%">Intro Text</th>
   <th scope="col">Question Text</th>
@@ -19,7 +20,11 @@
      <span><?php echo $question->parent_question_id ?><input type="hidden" name ='parent_question_id' value=<?php echo $question->parent_question_id ?>></input>
      </td>
      <td width="10%"  class="inlineEdit" >
-     <span  class="inlineEditA" style=displaye:inline"><?php echo $question->area?></span>
+     <span  class="inlineEditA" style=display:inline"><?php echo $question->group?></span>
+     <span  class="inlineEditB" style="display:none"><input type="text" name = 'group' value = <?php echo $question->group?> /></span>
+     </td>
+     <td width="10%"  class="inlineEdit" >
+     <span  class="inlineEditA" style=display:inline"><?php echo $question->area?></span>
      <span  class="inlineEditB" style="display:none"><input type="text" name = 'area' value = <?php echo $question->area?> /></span>
      </td>
      <td  width="30%"  class="inlineEdit" >

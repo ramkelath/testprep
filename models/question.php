@@ -9,7 +9,9 @@ class Question {
      public $intro_text;
      public $question_text;
      public $parent_question_id;
+     public $group;
      public $area;
+     public $type;
      public $correct_answer;
      public $wrong_answer_1;
      public $wrong_answer_2;
@@ -25,7 +27,9 @@ class Question {
 
       public function __construct($data = null) {
             if ($data) {
+                  if ($data['group_code']) {$this->group = $data['group_code'];}
                   if ($data['area']) {$this->area = $data['area'];}
+                  if ($data['type']) {$this->area = $data['type'];}
                   $this->intro_text = $data['intro_text'];
                   $this->question_id = $data['question_id'];
                   $this->parent_question_id = $data['parent_question_id'];
