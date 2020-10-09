@@ -1,19 +1,29 @@
 <?php
-include_once 'db_gateway.php';
 
-$_SESSION["test_id"] = "1";
-$_SESSION["QuestionList"] = array();
-//$_SESSION["ReviewList"] = array();
+include_once 'db_gateway.php';
+class Exam{
+
+public $questions = array();
+
+public function __construct($data = null) {
+
+//$_SESSION["test_id"] = "1";
+
+
 $gateway = new Gateway;
 $result = $gateway->exam();
-$index = 0;
+$index = -1;
+
 
 while ($row = $result->fetch_assoc()) {
     $Question = new Question($row);
     $Question->randomize_wrong_answers();
-    if (is_null($row["parent_question_id"])) { 
+    if ($row["parent_question_id"] == 0) {
         $index++;
     }
-    $_SESSION["QuestionList"][][$index]= $Question;
+    $this->questions[$index][] = $Question;
+
+ }
+}
 }
 ?>

@@ -8,9 +8,9 @@
       </style>
       <div style = "color: white; background-size: cover; background-image: linear-gradient( 45deg, grey, darkgrey);">
       <span style= "float: left; margin-left: 10%">Page: <?php echo $current + 1?></span>
-      <span style= "float: right; margin-right: 10%">Overall Timer: <span id ="exam_time">00:00:00</span></span> 
+      <span style= "float: right; margin-right: 10%">Overall Timer: <span id ="exam_time">00:00:00</span></span>
       <br>
-      <span style= "float: right; margin-right: 10%">Question Timer: <span id ="page_time">00:00:00</span></span> 
+      <span style= "float: right; margin-right: 10%">Question Timer: <span id ="page_time">00:00:00</span></span>
       <hr width="100%"></hr>
       </div>
       <?php if (isset($warning))  {?>
@@ -20,19 +20,17 @@
       <?php } ?>
       <form action="/testprep/processresponse.php" method="post">
       <input type = "hidden" name ="user_id" value =<?php echo $_SESSION["user_id"]?>>
-      <input type = "hidden" name ="test_id" value =<?php echo $_SESSION["test_id"]?>>
+      <input type = "hidden" name ="test_id" value ="1">
       <input type = "hidden" name ="exam_started" id="exam_started" value=<?php echo $_SESSION["ExamStarted"]?>>
       <input type = "hidden" name ="page_started" id="page_started" value=<?php $date = new DateTime(); echo $date->getTimestamp()?>>
        <div style="width: 80%;margin-left: 10%;">
       <?php
-      //$k = sizeof($QuestionGroup) ? sizeof($QuestionGroup) : 1;
-      $k = 1
+      $k = sizeof($QuestionGroup) ? sizeof($QuestionGroup) : 1;
       ?>
       <input type = "hidden" name = "length" value=<?php echo $k?>>
       <?php
       $j = 1;
-      //foreach ($QuestionGroup as $Question) {
-        $Question = $QuestionGroup;
+      foreach ($QuestionGroup as $Question) {
         if ($Question->intro_text) { echo '<div style="width:80%">'.$Question->intro_text . '</div><br><br>';}
       ?>
         <div style = "width=80%"><b><?php echo "Question " . $Question->question_id  . ".</b><br><br>" . $Question->question_text ?></div><br>
@@ -40,21 +38,21 @@
         <input type = "hidden" name = <?php echo "correct". $j?> value="<?php echo $Question->correct_answer?>">
         <?php
         for ($i= 0; $i < 3; $i++) {
-        ?>  
+        ?>
           <div>
           <span style="width:100%">
-          <input type = "radio" style="margin-top: 2px; " name="question<?php echo $j;?>" value="<?php echo $Question->answer[$i];?>"> 
+          <input type = "radio" style="margin-top: 2px; " name="question<?php echo $j;?>" value="<?php echo $Question->answer[$i];?>">
         </span>
           <label style="width:90%; margin-left:8px;vertical-align: top;"><?php echo $Question->answer[$i]; ?></label><br><br>
           </div>
         <?php
         }
-        ?>  
+        ?>
         <br>
       <?php
       $j++;
-      //}
-     ?>  
+      }
+     ?>
       <br><br>
       <div>
       <?php if ( $_SESSION["FirstPass"] ){?>

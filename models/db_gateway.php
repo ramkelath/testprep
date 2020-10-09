@@ -8,10 +8,11 @@ class Gateway {
         return $result;
     }
     public function exam() {
-        $select_query =  "SELECT parent_question_id, intro_text,  question_id, question_text, correct_answer, 
-                          wrong_answer_1, wrong_answer_2, wrong_answer_3, wrong_answer_4, wrong_answer_5, area 
+        $select_query =  "SELECT parent_question_id, intro_text,  question_id, question_text, correct_answer, type,
+                          wrong_answer_1, wrong_answer_2, wrong_answer_3, wrong_answer_4, wrong_answer_5, area, group_code
                           FROM  question
-                          LIMIT 10";
+                          WHERE question_id BETWEEN 230 AND 232
+                          ORDER BY CASE WHEN parent_question_id = 0 THEN question_id ELSE parent_question_id END, question_id";
         $result = DBSelect($select_query);
         return $result;
     }
