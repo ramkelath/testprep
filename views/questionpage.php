@@ -21,7 +21,7 @@
       <form action="/testprep/processresponse.php" method="post">
       <input type = "hidden" name ="user_id" value =<?php echo $_SESSION["user_id"]?>>
       <input type = "hidden" name ="test_id" value ="1">
-      <input type = "hidden" name ="exam_started" id="exam_started" value=<?php echo $_SESSION["ExamStarted"]?>>
+      <input type = "hidden" name ="exam_started" id="exam_started" value=<?php echo $Exam->start_time?>>
       <input type = "hidden" name ="page_started" id="page_started" value=<?php $date = new DateTime(); echo $date->getTimestamp()?>>
        <div style="width: 80%;margin-left: 10%;">
       <?php
@@ -55,11 +55,11 @@
      ?>
       <br><br>
       <div>
-      <?php if ( $_SESSION["FirstPass"] ){?>
+      <?php if ( $Exam->first_pass ){?>
       <span  style="width:8%;padding-right:4%"><input type = checkbox name="review" id = "review"> Mark for Review?</span>
       <span  style="padding:2%"><input style = "border-style: outset; width:15%" type = submit value = "Back" name = "Back"></span>
       <?php }?>
-      <?php if ($more_questions) {?>
+      <?php if ($Exam->more_questions) {?>
       <span  style="padding:1%"><input style = "border-style: outset; width:15%" type = submit value = "Next" name = "Next"></span>
       <?php }?>
       <span  style="padding:5%"><input style = "border-style: outset; width:15%" type = button value = "End Exam"  onclick="window.open('', '_self', ''); window.close();"></span>

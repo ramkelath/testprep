@@ -8,23 +8,22 @@ require_once(dirname(__DIR__)."/testprep/models/question.php");
 require_once(dirname(__DIR__)."/testprep/models/exam.php");
 
 session_start();
-$more_questions= true;
 $current = 0;
 
 // Create a new exam if we don't have one yet
-if ( !isset($_SESSION["ExamStarted"] )) {
+if ( !isset($_SESSION["Exam"] )) {
     $Date = new DateTime();
     $Exam = new Exam();
+    $Exam->current = $current;
+    $length = sizeof($Exam->questions);
+    $Exam->number_of_questions =  $length;
+    $Exam->start_time = $Date->getTimestamp();
+    $Exam->first_pass = true;
     $_SESSION["Exam"] = $Exam;
-    //$QuestionGroup =  $_SESSION["QuestionList"][$current][0];
-    $QuestionGroup = $Exam->questions[$current];
-    $_SESSION["CurrentPage"] = $current;
-    $_SESSION["TotalQuestions"] = sizeof($Exam->questions);
-    $_SESSION["FirstPass"] = true;
-    $_SESSION["ExamStarted"] = $Date->getTimestamp();
 } else {
-    $current = $_SESSION["CurrentPage"];
-    $length = $_SESSION["TotalQuestions"];
+    $Exam = $_SESSION["Exam"];
+    $current = $Exam->current;
+    $length = $Exam->number_of_questions;
 }
 
 // Process previous question and move to next requested question
@@ -37,26 +36,15 @@ if ($_GET && $_GET["direction"]) {
 
     // Check for the end of the exam or the beginning
 
-    if ($_SESSION["FirstPass"]) {
+    if ($Exam->first_pass) {
         if ($direction == 'Next') {
-            $current ++;
+          $Exam->nextQuestion();
+            //$current ++;
         } else {
-            $current --;
+            //$current --;
+          $Exam->previousQuestion();
         }
-        if (($current == $_SESSION["TotalQuestions"])) {
-            $warning = "You are at the last question!";
-            $current = $_SESSION["CurrentPage"];
-        } elseif ($current > $_SESSION["TotalQuestions"])  {
-            if (isset($_SESSION["ReviewList"]) && sizeof($_SESSION["ReviewList"])){
-                $current = array_shift($_SESSION["ReviewList"]);
-                $more_questions = sizeof($_SESSION["ReviewList"]);
-                $_SESSION["FirstPass"] = false;
-            }
-        } elseif ($current <  0) {
-            $warning = "You are at the first question!";
-            $current = 0;
-            $_SESSION["CurrentPage"] = $current;
-        }
+
     } else {
 
         if (isset($_SESSION["ReviewList"])){
@@ -70,20 +58,12 @@ if ($_GET && $_GET["direction"]) {
             $current = $_SESSION["CurrentPage"];
         }
     }
-
-    $_SESSION["CurrentPage"] = $current;
-    $current = $_SESSION["CurrentPage"];
-} else {
-
-        $current = 0;
-        $Date = new DateTime();
-        $_SESSION["CurrentPage"] = $current;
-        $_SESSION["FirstPass"] = true;
-        $_SESSION["ExamStarted"] = $Date->getTimestamp();
-
-
 }
-$QuestionGroup =  $_SESSION["Exam"]->questions[$current];
+
+
+$QuestionGroup =  $Exam->questions[$current];
+$warning = $Exam->warning;
+$more_questions = $Exam->more_questions;
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
 ?>
 <br>
