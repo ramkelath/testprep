@@ -24,10 +24,7 @@ $index = -1;
 while ($row = $result->fetch_assoc()) {
     $Question = new Question($row);
     $Question->randomize_wrong_answers();
-    if ($row["parent_question_id"] == 0) {
-        $index++;
-    }
-    $this->questions[$index][] = $Question;
+    $this->questions[] = $Question;
  }
 }
 

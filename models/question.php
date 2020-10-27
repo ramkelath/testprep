@@ -44,6 +44,7 @@ class Question {
                   $this->wrong_answer_1 = $data['wrong_answer_1'];
                   $this->wrong_answer_2 = $data['wrong_answer_2'];
                   $this->wrong_answer_3 = $data['wrong_answer_3'];
+                  $this->wrong_answer_4 = $data['wrong_answer_4'];
                   if ($data['wrong_answer_4']) {$this->wrong_answer_4 = $data['wrong_answer_4'];}
                   if ($data['wrong_answer_5']) {$this->wrong_answer_5 = $data['wrong_answer_5'];}
             }
@@ -52,7 +53,7 @@ class Question {
 
       public function randomize_wrong_answers() {
             shuffle($this->answer);
-            $insert = rand(0,2);
+            $insert = rand(0,3);
             if (in_array($this->correct_answer, array_slice($this->answer,0,3)) == false) { 
                   $this->answer[$insert] = $this->correct_answer;
             }

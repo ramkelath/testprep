@@ -24,20 +24,16 @@
       <input type = "hidden" name ="exam_started" id="exam_started" value=<?php echo $Exam->start_time?>>
       <input type = "hidden" name ="page_started" id="page_started" value=<?php $date = new DateTime(); echo $date->getTimestamp()?>>
        <div style="width: 80%;margin-left: 10%;">
+
+      <input type = "hidden" name = "length" value=<?php echo 1?>>
       <?php
-      $k = sizeof($QuestionGroup) ? sizeof($QuestionGroup) : 1;
-      ?>
-      <input type = "hidden" name = "length" value=<?php echo $k?>>
-      <?php
-      $j = 1;
-      foreach ($QuestionGroup as $Question) {
-        if ($Question->intro_text) { echo '<div style="width:80%">'.$Question->intro_text . '</div><br><br>';}
+        if ($Question->intro_text) { echo '<div style="width:80%">'.$Question->intro_text . '</div><br><br>';};
       ?>
         <div style = "width=80%"><b><?php echo "Question " . $Question->question_id  . ".</b><br><br>" . $Question->question_text ?></div><br>
-        <input type = "hidden" name = <?php echo "question_id" . $j?> value=<?php echo $Question->question_id;?>>
-        <input type = "hidden" name = <?php echo "correct". $j?> value="<?php echo $Question->correct_answer?>">
+        <input type = "hidden" name = <?php echo "question_id1"?> value=<?php echo $Question->question_id;?>>
+        <input type = "hidden" name = <?php echo "correct1"?> value="<?php echo $Question->correct_answer?>">
         <?php
-        for ($i= 0; $i < 3; $i++) {
+        for ($i= 0; $i < 4; $i++) {
         ?>
           <div>
           <span style="width:100%">
@@ -45,14 +41,10 @@
         </span>
           <label style="width:90%; margin-left:8px;vertical-align: top;"><?php echo $Question->answer[$i]; ?></label><br><br>
           </div>
+        <br>
         <?php
         }
         ?>
-        <br>
-      <?php
-      $j++;
-      }
-     ?>
       <br><br>
       <div>
       <?php if ( $Exam->first_pass ){?>

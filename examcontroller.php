@@ -44,7 +44,8 @@ if ($_GET && $_GET["direction"]) {
 
 }
 
-$QuestionGroup = $Exam->current_question_group;
+//$QuestionGroup = $Exam->current_question_group;
+$Question = $Exam->current_question_group;
 $warning = $Exam->warning;
 $more_questions = $Exam->more_questions;
 include(dirname(__DIR__)."/testprep/views/questionpage.php");
