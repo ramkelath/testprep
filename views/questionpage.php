@@ -25,19 +25,19 @@
       <input type = "hidden" name ="page_started" id="page_started" value=<?php $date = new DateTime(); echo $date->getTimestamp()?>>
        <div style="width: 80%;margin-left: 10%;">
 
-      <input type = "hidden" name = "length" value=<?php echo 1?>>
+      <input type = "hidden" name = "length" value=4>
       <?php
         if ($Question->intro_text) { echo '<div style="width:80%">'.$Question->intro_text . '</div><br><br>';};
       ?>
         <div style = "width=80%"><b><?php echo "Question " . $Question->question_id  . ".</b><br><br>" . $Question->question_text ?></div><br>
-        <input type = "hidden" name = <?php echo "question_id1"?> value=<?php echo $Question->question_id;?>>
-        <input type = "hidden" name = <?php echo "correct1"?> value="<?php echo $Question->correct_answer?>">
+        <input type = "hidden" name = "question_id" value=<?php echo $Question->question_id;?>>
+        <input type = "hidden" name = "correct" value="<?php echo $Question->correct_answer?>">
         <?php
         for ($i= 0; $i < 4; $i++) {
         ?>
           <div>
           <span style="width:100%">
-          <input type = "radio" style="margin-top: 2px; " name="question<?php echo $j;?>" value="<?php echo $Question->answer[$i];?>">
+          <input type = "radio" style="margin-top: 2px; " name="answer" value="<?php echo $Question->answer[$i];?>">
         </span>
           <label style="width:90%; margin-left:8px;vertical-align: top;"><?php echo $Question->answer[$i]; ?></label><br><br>
           </div>
