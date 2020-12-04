@@ -38,9 +38,32 @@ class Gateway {
                             WHERE e.question_id NOT IN
                             (SELECT question_id FROM answer WHERE user_id = 1)
                             ORDER BY RAND()
-                          LIMIT 200) source
+                          LIMIT 40) source
                           ORDER BY CASE WHEN parent_question_id = 0 THEN question_id ELSE parent_question_id END, question_id";
         $result = DBSelect($select_query);
+        return $result;
+    }
+
+    public function groups() {
+        $select_query =  "SELECT DISTINCT COALESCE(group_code,'Null') AS group_code FROM question ORDER BY group_code";
+        $result = DBSelect($select_query);
+        return $result;
+    }
+
+    public function areas() {
+        $select_query =  "SELECT DISTINCT area FROM question ORDER BY area";
+        $result = DBSelect($select_query);
+        return $result;
+    }
+
+    public function stats($user_id) {
+        $select_query =  "SELECT COALESCE(group_code, 'Null') group_code, area, count(correct) AS correct 
+                          FROM answer JOIN question ON answer.question_id = question.question_id 
+                          WHERE user_id = ? 
+                          GROUP BY 1, area 
+                          ORDER BY 1, area";
+        $users = array($user_id);
+        $result = DBQuery($select_query, $users);
         return $result;
     }
 

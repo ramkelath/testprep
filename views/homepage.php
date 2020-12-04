@@ -10,8 +10,7 @@
 <div class="text-left ml-5">
 <ul class="breadcrumb" style="font-size:large">
   <li><a href="#">Home</a></li>
-  <li><a href="#">Maintain Questions</a></li>
-  <li><a href="#">Maintain Users</a></li>
+  <li><a href="#">Reports</a></li>
 </ul>
 </div>
 <br/><br/>
@@ -28,7 +27,7 @@
 <a href = "/testprep/questionmaintcontroller.php">Maintain Questions</a>
 </li>
 <li>
-<a href="#">Maintain Users</a>
+<a href="/testprep/reportcontroller.php">Reports</a>
 </li>
 <li>
 <a href="/testprep/index.php?reset=1">Log Out</a>
