@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 </head>
 <body>
-	
 		<h1>
 			Statistics
 		</h1>
@@ -30,20 +29,9 @@
         for ($i=0; $i<$count; $i++) {
             echo '<td>'.$row[$i].'</td>';
         }
-        /*
-        echo '<td>'.$row[1].'</td>';
-        echo '<td>'.$row[2].'</td>';
-        echo '<td>'.$row[3].'</td>';
-        echo '<td>'.$row[4].'</td>';
-        echo '<td>'.$row[5].'</td>';
-        echo '<td>'.$row[6].'</td>';
-        echo '</tr>';
-        */
       }
     ?>
   </tbody>
 </table>
-
-
 </body>
 </html>

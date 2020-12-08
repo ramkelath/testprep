@@ -25,12 +25,7 @@ while( $row = $result->fetch_assoc()){
 public function get_stats($user_id) {
     $gateway = new Gateway;
     $result = $gateway->stats($user_id);
-    /*
-    $matrix['A']['1']='Alphaone';
-    $matrix['A']['2']='Alphatwo';
-    $matrix['B']['1']='Betaone';
-    $matrix['C']['2']='Gammatwo';
-    */
+
     $area= '';
     while ($row = $result->fetch_assoc()) {
         if ($row["area"] != $area) {
@@ -39,20 +34,19 @@ public function get_stats($user_id) {
         $matrix[$area][$row["group_code"]] = $row["correct"];
     }
     $groups = $this->groups;
-    $count  = count($groups);
-
+    $count  = sizeof($groups);
     foreach ($matrix as $area => $row) {
+        $table[$area] = array_fill  (0, $count, 0);
         foreach ($row as $group => $value) {
             for ($i=0; $i<$count; $i++) {
                 $score = 0;
                 if ($groups[$i] == $group) {
                     $score = $value;
+                    $table[$area][$i] = $score;
                 }
-                $table[$area][$i] = $score;
             }           
         }
     }
-
     return $table;
 }
 
