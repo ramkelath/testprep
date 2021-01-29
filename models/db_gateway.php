@@ -36,7 +36,8 @@ class Gateway {
                             LIMIT 52)
                             ) e
                             WHERE e.question_id NOT IN
-                            (SELECT question_id FROM answer WHERE user_id = 1)
+                            (SELECT question_id FROM answer WHERE user_id = 1
+                            AND test_id = (SELECT MIN(test_id) FROM answer WHERE user_id = 1))
                             ORDER BY RAND()
                           LIMIT 40) source
                           ORDER BY CASE WHEN parent_question_id = 0 THEN question_id ELSE parent_question_id END, question_id";

@@ -8,17 +8,17 @@ public $groups = array();
 
 public function __construct($data = null) {
 
-$gateway = new Gateway;
+    $gateway = new Gateway;
 
-$result = $gateway->areas();
-while( $row = $result->fetch_assoc()){
-    $this->areas[] = $row["area"];
-}
-sort($this->areas);
-$result= $gateway->groups();
-while( $row = $result->fetch_assoc()){
-    $this->groups[] = $row["group_code"];
-}
+    $result = $gateway->areas();
+    while( $row = $result->fetch_assoc()){
+        $this->areas[] = $row["area"];
+    }
+    sort($this->areas);
+    $result= $gateway->groups();
+    while( $row = $result->fetch_assoc()){
+        $this->groups[] = $row["group_code"];
+    }
 
 }
 
