@@ -9,12 +9,12 @@
 
 <div class="login" style="text-align:center">
 	<div class="login-pic">
-		<img src="images/img-02.png" alt="IMG">
+		<img src="images/poilogo.jpeg"  style="width:128px;height: 128px;" alt="Performance Opportunity">
 	</div>
 
 	<form class="login-form" action="index.php" method="post">
 		<span class="login-form-title"  style="font-size: large; font-style:bold;">
-			Member Login
+			Performance Opportunity
 		</span>
 		<br>
 		<?php echo $error_message ?>
