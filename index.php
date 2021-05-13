@@ -19,6 +19,7 @@ if (isset($_POST["login"])) {
     $result = $gateway->login($login, $password);         
     if ($result && $row = $result->fetch_assoc()) {
         $_SESSION["user_id"] = $row["id"];
+        $_SESSION["role"] = $row["level"];
     } else {
         $error_message = 'Login unsuccessful, please try again';
     }

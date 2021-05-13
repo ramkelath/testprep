@@ -2,7 +2,7 @@
 include_once 'db_operations.php';
 class Gateway {
     public function login($login, $password){
-        $select_query =  "SELECT id FROM user WHERE username = ? AND password = ?";
+        $select_query =  "SELECT id, level FROM user WHERE username = ? AND password = ?";
         $credentials = array($login, $password);
         $result = DBQuery($select_query, $credentials);
         return $result;

@@ -59,3 +59,16 @@ CREATE TABLE `answer` (
   `taken_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY `user_test_question` (`user_id`,`test_id`,`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE exam (
+  `exam` VARCHAR(50) NOT NULL,
+  `intro_page_text` VARCHAR(4500) NULL,
+  `total_questions` INT NULL,
+  `plan_questions` INT NULL,
+  `init_questions` INT NULL,
+  `cntl_questions` INT NULL,
+  `all_questions` INT NULL,
+  `exec_questions` INT NULL,
+  `close_questions` INT NULL,
+  PRIMARY KEY (`exam`)
+  )  ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
