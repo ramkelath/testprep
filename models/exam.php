@@ -1,7 +1,7 @@
 <?php
 
 include_once 'db_gateway.php';
-class Exam{
+class Test{
 
 public $questions = array();
 public $current;
@@ -17,7 +17,7 @@ public $more_questions = true;
 public function __construct($data = null) {
 
 $gateway = new Gateway;
-$result = $gateway->exam();
+$result = $gateway->test();
 $index = -1;
 
 // Load questions into array
@@ -44,11 +44,11 @@ public function nextQuestion() {
           $this->current_question_group = $this->questions[$review_index];
           $this->more_questions = sizeof($_SESSION["ReviewList"]);
           if (!$his->more_questions) {
-            $this->warning = "You have reached the end of the exam";
+            $this->warning = "You have reached the end of the test";
           }
        }
   }
-  $_SESSION["Exam"] =$this;
+  $_SESSION["Test"] =$this;
 }
 
 
@@ -60,7 +60,7 @@ public function previousQuestion(){
     $this->current = 0;
   }
   $this->current_question_group = $this->questions[$this->current];
-  $_SESSION["Exam"] =$this;
+  $_SESSION["Test"] =$this;
 }
 
 }

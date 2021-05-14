@@ -25,7 +25,7 @@ if (isset($_POST["review"])) {
     $review = "";
 }
 
-header('Location: '."/testprep/examcontroller.php?direction=".$direction.$review);
+header('Location: '."/testprep/testcontroller.php?direction=".$direction.$review);
 exit();
 ?>
 <br>

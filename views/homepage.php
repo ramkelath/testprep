@@ -1,12 +1,13 @@
 
 <h1 class="text-center">
-      PMP Test Preparation Home
+      PMP Exam Preparation
 </h1>
 <br>
 <br>
 <br>
 
 <div style="width:80%; margin:auto">
+<!---
 <div class="text-left ml-5">
 <ul class="breadcrumb" style="font-size:large">
   <li><a href="#">Home</a></li>
@@ -14,20 +15,17 @@
 </ul>
 </div>
 <br/><br/>
+---->
 <div class="text-left">
-<ul style="cell-padding:10px; line-height: 300%; font-size:xx-large; list-style-type: none">
-<!---
+<ul style="cell-padding:10px; line-height: 300%; font-size:x-large; list-style-type: none">
 <li>
-<a  onclick="window.open('/testprep/examcontroller.php', 
+<a  onclick="window.open('/testprep/testcontroller.php', 
                          'newwindow', 
                          'width=700,height=500',
                          'toolbar=no, location=no'); 
-              return false;" target="_blank">Take the exam</a>
+              return false;" target="_blank">PMP Exam</a>
 </li>
---->
-<li>
-<a  href = "/testprep/index.php?assesment=PMP">PMP Exam</a>
-</li>
+
 <li>
 <a  href = "/testprep/index.php?assesment=CAPM">CAPM Exam</a>
 </li>
