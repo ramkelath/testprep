@@ -7,13 +7,6 @@
 include_once(dirname(__DIR__)."/testprep/models/db_gateway.php");
 session_start();
 $error_message = '';
-// Create a new exam list if we don't have one yet
-if ( !isset($_SESSION["Exam"] )) {
-    $Exam = new Exam();
-    $_SESSION["Exam"] = $Exam;
-} else {
-    $Exam= $_SESSION["Exam"];
-}
 if (isset($_GET["reset"])) {
     session_destroy();
     header('Location: /testprep/index.php');
