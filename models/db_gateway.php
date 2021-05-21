@@ -75,6 +75,31 @@ class Gateway {
         return $result;
     }
 
+    public function area_report($test_id, $user_id) {
+        $select_query =  "SELECT q.area, sum(a.correct) correct, count(a.question_id) total, sum(a.correct) / count(a.question_id) * 100 AS grade
+                          FROM question q, answer a
+                          WHERE a.test_id = ?
+                          AND user_id  = ?
+                          AND a.question_id = q.question_id
+                          GROUP BY q.area";
+        $params = array($test_id, $user_id);
+        $result = DBQuery($select_query, $params);
+        return $result;
+    }
+
+    public function group_report($test_id, $user_id) {
+        $select_query =  "SELECT q.group_code, sum(a.correct) correct, count(a.question_id) total, sum(a.correct) / count(a.question_id) * 100 AS grade
+                          FROM question q, answer a
+                          WHERE a.test_id = ?
+                          AND user_id  = ?
+                          AND group_code IS NOT NULL
+                          AND a.question_id = q.question_id
+                          GROUP BY q.group_code";
+        $params = array($test_id, $user_id);
+        $result = DBQuery($select_query, $params);
+        return $result;
+    }
+
 }
 
 ?>

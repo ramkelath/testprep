@@ -9,7 +9,8 @@ if (!isset($_SESSION["user_id"])){
     $_SESSION["user_id"] = 1;
 };
 $report = new Report();
-$report_table = $report->get_stats($_SESSION["user_id"]);
+$area_report = $report->get_area_report($_SESSION["user_id"]);
+$group_report = $report->get_group_report($_SESSION["user_id"]);
 include(dirname(__DIR__)."/testprep/views/reportpage.php");
 ?>
 <br>

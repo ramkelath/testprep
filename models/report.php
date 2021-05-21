@@ -6,6 +6,7 @@ class Report{
 public $areas = array();
 public $groups = array();
 
+
 public function __construct($data = null) {
 
     $gateway = new Gateway;
@@ -22,6 +23,27 @@ public function __construct($data = null) {
 
 }
 
+public function get_area_report($user_id) {
+    $gateway = new Gateway;
+    $result = $gateway->area_report(1, $user_id);
+    while ($row = $result->fetch_assoc()) {
+        $areas[] = $row;
+    }
+    return $result;
+
+}
+
+public function get_group_report($user_id) {
+    $gateway = new Gateway;
+    $result = $gateway->group_report(1, $user_id);
+ 
+    while ($row = $result->fetch_assoc()) {
+        $areas[] = $row;
+    }
+    return $result;
+
+}
+
 public function get_stats($user_id) {
     $gateway = new Gateway;
     $result = $gateway->stats($user_id);
@@ -34,6 +56,7 @@ public function get_stats($user_id) {
         $matrix[$area][$row["group_code"]] = $row["correct"];
     }
     $groups = $this->groups;
+    $areas = $this->groups;
     $count  = sizeof($groups);
     foreach ($matrix as $area => $row) {
         $table[$area] = array_fill  (0, $count, 0);
