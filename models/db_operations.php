@@ -1,7 +1,7 @@
 <?php
 
 function OpenDBConnection() {
-   $dbhost = "127.0.0.1";
+   $dbhost = 'poi.db';
    $dbuser = "phpuser";
    $dbpass = "Poi2020%";
    $db = "testprep";

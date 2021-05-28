@@ -23,16 +23,6 @@ class Gateway {
         $result = DBQuery($select_query, $params);
         return $result;
     }
-
-    public function practice($area) {
-        $select_query =  "SELECT parent_question_id, intro_text,  question_id, question_text, correct_answer, type,
-                          wrong_answer_1, wrong_answer_2, wrong_answer_3, wrong_answer_4, wrong_answer_5, area, group_code
-                          FROM  question
-                          WHERE area = ?";
-        $params = array($area);
-        $result = DBQuery($select_query, $params);
-        return $result;
-    }
         
     public function test() {
         $select_query =  "SELECT parent_question_id, intro_text,  question_id, question_text, correct_answer, type,
