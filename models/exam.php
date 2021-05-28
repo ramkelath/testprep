@@ -4,17 +4,9 @@ include_once 'db_gateway.php';
 
 class Exam{
 
-  public $questions = array();
   public $intro_page_text;
-  public $current;
-  public $review_questions = array();
-  public $current_question_group;
   public $number_of_questions;
-  public $start_time;
-  public $test_id = 1;
-  public $warning = "";
-  public $first_pass = true;
-  public $more_questions = true;
+
   public $assessment = "";
 
   public function __construct($assessment= 'PMP') {
@@ -29,9 +21,6 @@ class Exam{
   }
   $this->assessment = $assessment;
 
-  }
-  $this->current_question_group = $this->questions[$this->current];
-  $_SESSION["Test"] =$this;
 }
 
 }

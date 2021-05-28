@@ -10,7 +10,6 @@ require_once(dirname(__DIR__)."/testprep/models/exam.php");
 session_start();
 
 $assessment = $_GET['assessment'];
-//$_SESSION['assessment'] = $assessment;
 $exam= new Exam($assessment);
 $_SESSION['exam'] = serialize($exam);
 include("views/exampage.php");

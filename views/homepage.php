@@ -19,18 +19,13 @@
 <div class="text-left">
 <ul style="cell-padding:10px; line-height: 300%; font-size:x-large; list-style-type: none">
 <li>
-<a  onclick="window.open('/testprep/testcontroller.php', 
-                         'newwindow', 
-                         'width=700,height=500',
-                         'toolbar=no, location=no'); 
-              return false;" target="_blank">PMP Exam</a>
-</li>
-
-<li>
-<a  href = "/testprep/index.php?assesment=CAPM">CAPM Exam</a>
+<a  href = "/testprep/examcontroller.php?assessment=PMP">PMP Exam</a>
 </li>
 <li>
-<a  href = "/testprep/index.php?assesment=Practice">Knowledge Area Practice</a>
+<a  href = "/testprep/examcontroller.php?assessment=CAPM">CAPM Exam</a>
+</li>
+<li>
+<a  href = "/testprep/examcontroller.php?assessment=Practice">Knowledge Area Practice</a>
 </li>
 <li>
 <a href="/testprep/reportcontroller.php">History</a>

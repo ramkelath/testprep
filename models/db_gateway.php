@@ -1,16 +1,20 @@
 <?php
 include_once 'db_operations.php';
 class Gateway {
+
     public function login($login, $password){
         $select_query =  "SELECT id, level FROM user WHERE username = ? AND password = ?";
         $credentials = array($login, $password);
         $result = DBQuery($select_query, $credentials);
         return $result;
     }
-    public function exam() {
+
+    public function exam($exam) {
         $select_query =  "SELECT exam, intro_page_text, total_questions, init_questions, cntl_questions, all_questions, exec_questions
-                           FROM exam ";
-        $result = DBSelect($select_query);
+                           FROM exam 
+                           WHERE exam = ?";
+        $params = array($exam);
+        $result = DBQuery($select_query, $params);
         return $result;
     }
 
